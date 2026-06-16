@@ -2,6 +2,7 @@ import { css } from 'solid-styled'
 import MazeLabels from './MazeLabels'
 import MazeCells from './MazeCells'
 import MazeWalls from './MazeWalls'
+import { Show } from 'solid-js'
 
 const Maze = (props) => {
     css`
@@ -88,13 +89,13 @@ const Maze = (props) => {
                 startCell={props.startCell}
                 endCell={props.endCell}
             />
-            {props.showWalls !== false && (
+            <Show when={props.showWalls !== false}>
                 <MazeWalls
                     walls={props.walls}
                     rows={props.rows}
                     cols={props.cols}
                 />
-            )}
+            </Show>
             {props.children}
         </svg>
     )

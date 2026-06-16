@@ -1,4 +1,4 @@
-import { For } from 'solid-js'
+import { For, Show } from 'solid-js'
 
 const MazeCells = (props) => {
     const getFill = (x, y) => {
@@ -20,7 +20,7 @@ const MazeCells = (props) => {
                         stroke="#d1d5db"
                         stroke-width="0.04"
                     />
-                    {props.startCell && props.startCell.x === x && props.startCell.y === y && (
+                    <Show when={props.startCell && props.startCell.x === x && props.startCell.y === y}>
                         <text
                             x={x + 0.5}
                             y={y + 0.5}
@@ -33,8 +33,8 @@ const MazeCells = (props) => {
                         >
                             S
                         </text>
-                    )}
-                    {props.endCell && props.endCell.x === x && props.endCell.y === y && (
+                    </Show>
+                    <Show when={props.endCell && props.endCell.x === x && props.endCell.y === y}>
                         <text
                             x={x + 0.5}
                             y={y + 0.5}
@@ -47,7 +47,7 @@ const MazeCells = (props) => {
                         >
                             E
                         </text>
-                    )}
+                    </Show>
                 </g>
             )}
         </For>
