@@ -1,62 +1,64 @@
-import { For, createMemo } from 'solid-js'
+import { For, createMemo } from 'solid-js';
 
 const MazeWalls = (props) => {
-    const hWalls = createMemo(() => {
-        const wallsSet = props.walls()
-        const arr = []
-        for (let r = 1; r < props.rows; r++) {
-            for (let c = 0; c < props.cols; c++) {
-                const id = `h_${r}_${c}`
-                if (wallsSet.has(id)) {
-                    arr.push({ id, x1: c, y1: r, x2: c + 1, y2: r })
-                }
-            }
-        }
-        return arr
-    })
+  const hWallsIds = createMemo(() =>
+    [...props.walls()].filter(id => id.startsWith('h_'))
+  );
+  const vWallsIds = createMemo(() =>
+    [...props.walls()].filter(id => id.startsWith('v_'))
+  );
 
-    const vWalls = createMemo(() => {
-        const wallsSet = props.walls()
-        const arr = []
-        for (let c = 1; c < props.cols; c++) {
-            for (let r = 0; r < props.rows; r++) {
-                const id = `v_${r}_${c}`
-                if (wallsSet.has(id)) {
-                    arr.push({ id, x1: c, y1: r, x2: c, y2: r + 1 })
-                }
-            }
-        }
-        return arr
-    })
+  return (
+    <g>
+      <For each={hWallsIds()}>
+        {(id) => {
+          const pos = createMemo(() => {
+            const [_, r, c] = id.split('_');
+            return {
+              x1: +c,
+              y1: +r,
+              x2: +c + 1,
+              y2: +r,
+            };
+          });
+          return (
+            <line
+              x1={pos().x1}
+              y1={pos().y1}
+              x2={pos().x2}
+              y2={pos().y2}
+              stroke="#dc2626"
+              stroke-width="0.06"
+            />
+          );
+        }}
+      </For>
 
-    return (
-        <g>
-            <For each={hWalls()}>
-                {(wall) => (
-                    <line
-                        x1={wall.x1}
-                        y1={wall.y1}
-                        x2={wall.x2}
-                        y2={wall.y2}
-                        stroke="#dc2626"
-                        stroke-width="0.06"
-                    />
-                )}
-            </For>
-            <For each={vWalls()}>
-                {(wall) => (
-                    <line
-                        x1={wall.x1}
-                        y1={wall.y1}
-                        x2={wall.x2}
-                        y2={wall.y2}
-                        stroke="#dc2626"
-                        stroke-width="0.06"
-                    />
-                )}
-            </For>
-        </g>
-    )
-}
+      <For each={vWallsIds()}>
+        {(id) => {
+          const pos = createMemo(() => {
+            const [_, r, c] = id.split('_');
+            return {
+              x1: +c,
+              y1: +r,
+              x2: +c,
+              y2: +r + 1,
+            };
+          });
+          return (
+            <line
+              x1={pos().x1}
+              y1={pos().y1}
+              x2={pos().x2}
+              y2={pos().y2}
+              stroke="#dc2626"
+              stroke-width="0.06"
+            />
+          );
+        }}
+      </For>
+    </g>
+  );
+};
 
-export default MazeWalls
+export default MazeWalls;
