@@ -1,0 +1,52 @@
+{
+    "hidefiles.configurationType": "local",
+    "hidefiles.globalConfig": {
+        "profiles": [
+            {
+                "name": "Default",
+                "detail": "",
+                "description": "Test",
+                "hidden": [
+                    ".vscode/",
+                    "node_modules/",
+                    "jsconfig.json",
+                    "package-lock.json",
+                    "package.json",
+                    "pnpm-lock.yaml",
+                    "README.md",
+                    "vite.config.js",
+                    "src/index.jsx",
+                    ".vscode/"
+                ],
+                "peek": []
+            },
+            {
+                "name": "Strict",
+                "detail": "Hide everything not immediately required",
+                "hidden": [
+                    "$Default"
+                ]
+            }
+        ]
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        ".vscode/": true,
+        "node_modules/": true,
+        "jsconfig.json": true,
+        "package-lock.json": true,
+        "package.json": true,
+        "pnpm-lock.yaml": true,
+        "README.md": true,
+        "vite.config.js": true,
+        "src/index.jsx": true
+    },
+    "hidefiles.selectedProfile": "Default",
+    "symbols.folders.associations": {
+        "shared-styles": "folder-purple-code"
+    }
+}

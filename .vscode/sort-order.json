@@ -1,0 +1,15 @@
+{
+  "src": [
+    "App",
+    "App.jsx",
+    "Screens",
+    "components",
+    "context",
+    "peer",
+    "index.jsx",
+    "styles.css"
+  ],
+  "src/Screens": [
+    "MenuScreen.jsx"
+  ]
+}
