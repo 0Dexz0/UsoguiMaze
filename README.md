@@ -1,6 +1,8 @@
 # WebSite
 https://0dexz0.github.io/UsoguiMaze/
 
+Primarily to test the SolidJS library.
+
 ## Usage
 
 Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
