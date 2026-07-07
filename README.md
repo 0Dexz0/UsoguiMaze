@@ -1,7 +1,7 @@
 # WebSite
-https://0dexz0.github.io/UsoguiMaze/
+**Primarily to test the SolidJS library.**
 
-Primarily to test the SolidJS library.
+https://0dexz0.github.io/UsoguiMaze/
 
 ## Usage
 
